@@ -12,11 +12,11 @@ from azureml.core import Dataset
 
 # TODO: Split data into train and test sets.
 
-### YOUR CODE HERE ###a
+# ## YOUR CODE HERE ###a
 
 run = Run.get_context()
-ws = run.experiment.workspace()
-dataset = ws.datasets['hr-analytics']
+ws = run.experiment.workspace
+ds = ws.datasets['hr-analytics']
 
 def clean_data(data):
     # Clean and one hot encode data
@@ -25,7 +25,9 @@ def clean_data(data):
     gender = pd.get_dummies(x_df.gender, prefix="gender")
     x_df.drop("gender", axis=1, inplace=True)
     x_df.join(gender)
-
+    
+    x_df["relevent_experience"] = x_df.relevent_experience.apply(lambda s: 1 if s == "Has relevent experience" else 0)
+    
     enrolled_university = pd.get_dummies(x_df.enrolled_university, prefix="enrolled")
     x_df.drop("enrolled_university", axis=1, inplace=True)
     x_df.join(enrolled_university)
@@ -57,7 +59,7 @@ def clean_data(data):
     y_df = x_df.pop("target")
 
     return x_df, y_df
-    
+
 
 def main():
     # Add arguments to script
