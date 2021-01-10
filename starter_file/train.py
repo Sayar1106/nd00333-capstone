@@ -10,14 +10,13 @@ import pandas as pd
 from azureml.core.run import Run
 from azureml.core import Dataset
 
-ds = Dataset.Tabular.from_delimited_files(path=[(datastore, ('data/train.csv'))])
-
-
 # TODO: Split data into train and test sets.
 
 ### YOUR CODE HERE ###a
 
 run = Run.get_context()
+ws = run.experiment.workspace()
+dataset = ws.datasets['hr-analytics']
 
 def clean_data(data):
     # Clean and one hot encode data
