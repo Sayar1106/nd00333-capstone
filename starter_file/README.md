@@ -6,7 +6,7 @@ This project will attempt to forecast whether a person will leave their current 
 
 ### Overview
 
-Our dataset is taken from Kaggle. You can find it [here]("https://www.kaggle.com/arashnic/hr-analytics-job-change-of-data-scientists).
+Our dataset is taken from Kaggle. You can find it [here](https://www.kaggle.com/arashnic/hr-analytics-job-change-of-data-scientists)
 ### Task
 
 Our task will be to predict whether an employee will leave their current employer based on certain features. 
